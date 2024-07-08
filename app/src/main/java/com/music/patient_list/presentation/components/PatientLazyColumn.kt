@@ -18,6 +18,7 @@ fun  PatientLazyColumn(
 ) {
     LazyColumn(
         modifier =modifier
+            .padding(10.dp)
     ) {
         items(patientList){ patient->
             PatientCard(

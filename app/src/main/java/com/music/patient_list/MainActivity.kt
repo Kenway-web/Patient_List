@@ -13,6 +13,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.tooling.preview.Preview
+import com.music.patient_list.presentation.PatientDetails.PatientDetails
 import com.music.patient_list.presentation.PatientList.PatientList
 import com.music.patient_list.presentation.theme.Patient_ListTheme
 import dagger.hilt.android.AndroidEntryPoint
@@ -32,9 +33,10 @@ class MainActivity : ComponentActivity() {
                         .fillMaxSize()
                         .nestedScroll(scrollBehavior.nestedScrollConnection)
                 ) {
-                   PatientList(
-                       scrollBehavior=scrollBehavior
-                   )
+//                   PatientList(
+//                       scrollBehavior=scrollBehavior
+//                   )
+                    PatientDetails()
                 }
             }
         }

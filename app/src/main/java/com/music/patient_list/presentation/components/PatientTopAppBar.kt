@@ -1,28 +1,32 @@
 package com.music.patient_list.presentation.components
 
-import android.icu.text.CaseMap.Title
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material3.CenterAlignedTopAppBar
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.material3.TopAppBarScrollBehavior
-import androidx.compose.material3.TopAppBarState
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.withStyle
+import androidx.compose.ui.unit.sp
 
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun TopAppBarState(
     modifier: Modifier = Modifier,
-    scrollBehavior: TopAppBarScrollBehavior,
-    title: String = "Patient List"
-) {
+    scrollBehavior: TopAppBarScrollBehavior? = null,
+    title: String = "Patient List",
+    showBackButton: Boolean=false,
+){
     CenterAlignedTopAppBar(
         modifier = modifier,
         scrollBehavior = scrollBehavior,
@@ -36,8 +40,21 @@ fun TopAppBarState(
                         append(" ${title.split(" ").last()}")
                     }
                 },
-                fontWeight = FontWeight.ExtraBold
+                fontWeight = FontWeight.ExtraBold,
+                fontSize = 24.sp
             )
+        },
+        navigationIcon = {
+            if (showBackButton) {
+                IconButton(onClick = {}) {
+                    Icon(
+                        imageVector = Icons.Filled.ArrowBack,
+                        contentDescription = "Back button"
+                    )
+                }
+            } else {
+                null
+            }
         },
         colors = TopAppBarDefaults.centerAlignedTopAppBarColors(
             scrolledContainerColor = MaterialTheme.colorScheme.background
