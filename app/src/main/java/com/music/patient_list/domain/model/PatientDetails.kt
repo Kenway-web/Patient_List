@@ -7,7 +7,7 @@ import androidx.room.PrimaryKey
 @Entity
 data class PatientDetails(
     @PrimaryKey
-    val id:Int? = null,
+    val id:Int,
     val name:String,
     val age:String,
     val Date:String,
