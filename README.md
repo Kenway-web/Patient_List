@@ -24,4 +24,4 @@ An Android app that keeps count of all the patients, used by medical professiona
 
 
 ###Authors
-Shoaib and Shobit are passionate developers dedicated to creating useful and efficient applications for the medical field. They focus on leveraging modern technologies to improve the usability and functionality of their apps. With a strong background in Android development and a keen interest in medical applications, they strive to provide the best tools for medical professionals.
+Shoaib ali and Shobhit are passionate developers dedicated to creating useful and efficient applications for the medical field. They focus on leveraging modern technologies to improve the usability and functionality of their apps. With a strong background in Android development and a keen interest in medical applications, they strive to provide the best tools for medical professionals.
