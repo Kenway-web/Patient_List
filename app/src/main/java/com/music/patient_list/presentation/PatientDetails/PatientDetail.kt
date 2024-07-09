@@ -192,7 +192,7 @@ fun PatientDetails(
                         .weight(1f),
                     value = state.doctorPrescription,
                     onValueChange = {
-                        viewModel.onEvent(PatientDetailsEvent.DoctorNameChanged(it))
+                        viewModel.onEvent(PatientDetailsEvent.DoctorPrescriptionChanged(it))
                     },
                     label = {
                         Text(

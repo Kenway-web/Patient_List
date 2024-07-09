@@ -10,17 +10,18 @@ class PatientDetailsViewModel:ViewModel() {
 
         fun onEvent(event:PatientDetailsEvent){
                 when(event){
-                        is PatientDetailsEvent.AgeChanged -> {
-                                state = state.copy(name = event.age)
+
+                        is PatientDetailsEvent.NameChanged -> {
+                                state=state.copy(name = event.name)
                         }
                         is PatientDetailsEvent.DoctorNameChanged -> {
                                 state=state.copy(doctorName = event.doctorName)
                         }
-                        is PatientDetailsEvent.DoctorPrescriptionChanged -> {
-                                state=state.copy(doctorName = event.doctorPrescription)
+                        is PatientDetailsEvent.AgeChanged -> {
+                                state = state.copy(age = event.age)
                         }
-                        is PatientDetailsEvent.NameChanged -> {
-                                state=state.copy(name = event.name)
+                        is PatientDetailsEvent.DoctorPrescriptionChanged -> {
+                                state=state.copy(doctorPrescription = event.doctorPrescription)
                         }
                         PatientDetailsEvent.SelectFemale -> {
                                 state=state.copy(gender = 2)
@@ -31,7 +32,6 @@ class PatientDetailsViewModel:ViewModel() {
                         PatientDetailsEvent.SaveButtonClicked ->{
 
                         }
-
                 }
         }
 }

@@ -8,7 +8,3 @@ data class PatientDetailsUIState(
     val doctorPrescription: String = ""
 )
 
-
-/*
-For gender male is 1 and for female is 2
-*/
