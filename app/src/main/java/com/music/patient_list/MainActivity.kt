@@ -16,6 +16,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.tooling.preview.Preview
 import com.music.patient_list.presentation.PatientDetails.PatientDetails
+import com.music.patient_list.presentation.PatientDetails.PatientDetailsViewModel
 import com.music.patient_list.presentation.PatientList.PatientList
 import com.music.patient_list.presentation.theme.Patient_ListTheme
 import dagger.hilt.android.AndroidEntryPoint
@@ -39,25 +40,10 @@ class MainActivity : ComponentActivity() {
 //                   PatientList(
 //                       scrollBehavior=scrollBehavior
 //                   )
-                   PatientDetails()
+                   PatientDetails(viewModel = PatientDetailsViewModel())
                 }
             }
         }
     }
 }
 
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
-}
-
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    Patient_ListTheme {
-        Greeting("Android")
-    }
-}

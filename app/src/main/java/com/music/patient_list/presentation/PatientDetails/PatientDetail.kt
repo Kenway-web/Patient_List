@@ -46,8 +46,11 @@ import java.util.Calendar
 @RequiresApi(Build.VERSION_CODES.O)
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun PatientDetails() {
+fun PatientDetails(
+    viewModel: PatientDetailsViewModel
+) {
 
+    val state = viewModel.state
     val focusRequester = remember {
         FocusRequester()
     }
@@ -86,8 +89,10 @@ fun PatientDetails() {
                     modifier = Modifier
                         .fillMaxWidth()
                         .focusRequester(focusRequester),
-                    value = "",
-                    onValueChange = {},
+                    value = state.name,
+                    onValueChange = {newvalue->
+                        viewModel.onEvent(PatientDetailsEvent.NameChanged(newvalue))
+                    },
                     label = {
                         Text(
                             text = "Patient Name",
@@ -113,8 +118,10 @@ fun PatientDetails() {
                 ) {
                     OutlinedTextField(
                         modifier = Modifier.weight(1f),
-                        value = "",
-                        onValueChange = {},
+                        value = state.age,
+                        onValueChange = {
+                            viewModel.onEvent(PatientDetailsEvent.AgeChanged(it))
+                        },
                         label = {
                             Text(
                                 text = "Age",
@@ -136,15 +143,19 @@ fun PatientDetails() {
                     GenderRadioButton(
                         modifier = Modifier.padding(horizontal = 10.dp),
                         text = "Male",
-                        selected = true,
-                        onClick = {}
+                        selected = state.gender==1,
+                        onClick = {
+                            viewModel.onEvent(PatientDetailsEvent.SelectMale)
+                        }
                     )
 
                     GenderRadioButton(
                         modifier = Modifier.padding(horizontal = 10.dp),
                         text = "Female",
-                        selected = false,
-                        onClick = {}
+                        selected = state.gender==2,
+                        onClick = {
+                            viewModel.onEvent(PatientDetailsEvent.SelectFemale)
+                        }
                     )
 
                 }
@@ -153,8 +164,10 @@ fun PatientDetails() {
 
                 OutlinedTextField(
                     modifier = Modifier.fillMaxWidth(),
-                    value = "",
-                    onValueChange = {},
+                    value = state.doctorName,
+                    onValueChange = {
+                        viewModel.onEvent(PatientDetailsEvent.DoctorNameChanged(it))
+                    },
                     label = {
                         Text(
                             text = " Assigned Doctor's Name",
@@ -177,8 +190,10 @@ fun PatientDetails() {
                     modifier = Modifier
                         .fillMaxSize()
                         .weight(1f),
-                    value = "",
-                    onValueChange = {},
+                    value = state.doctorPrescription,
+                    onValueChange = {
+                        viewModel.onEvent(PatientDetailsEvent.DoctorNameChanged(it))
+                    },
                     label = {
                         Text(
                             text = "Doctor's Prescription.",
@@ -206,4 +221,4 @@ fun PatientDetails() {
 }
 
 // state :Anything that can change during the usage of the app.
-// event : Anything that a user can do
+// event : Anything that a user can do is event
