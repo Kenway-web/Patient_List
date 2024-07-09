@@ -23,5 +23,15 @@ An Android app that keeps count of all the patients, used by medical professiona
    git clone https://github.com/yourusername/patient-tracker-list-app.git
 
 
-###Authors
+<br>
+</br>
+
+<img src="https://github.com/Kenway-web/Patient_List/blob/Development/app/src/main/res/drawable/PatientDetails.png" alt="Profile Details" width="300" height="600">
+
+<br>
+</br>
+
+
+
+### Authors
 Shoaib ali and Shobhit are passionate developers dedicated to creating useful and efficient applications for the medical field. They focus on leveraging modern technologies to improve the usability and functionality of their apps. With a strong background in Android development and a keen interest in medical applications, they strive to provide the best tools for medical professionals.
