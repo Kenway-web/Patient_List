@@ -7,11 +7,18 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.layout.width
 import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.scale
@@ -22,17 +29,27 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.music.patient_list.R
 import com.music.patient_list.domain.model.PatientDetails
+import com.music.patient_list.presentation.PatientList.DeleteDialog
 
 
 @Composable
 fun PatientCard(
-    modifier: Modifier = Modifier,
-    patient:PatientDetails,
-    onItemClicked:() -> Unit,
-){
+    patient: PatientDetails, onItemClicked: () -> Unit, onDeleteConfirm: () -> Unit
+) {
+    var showDialog by remember { mutableStateOf(false) }
+    if (showDialog) {
+        DeleteDialog(title = "Delete",
+            message = "Are you sure you want to delete" + "patient \"${patient.name}\" from patient list",
+            onDialogDismissClicked = { showDialog = false },
+            onConfirmButtonClicked = {
+                onDeleteConfirm()
+                showDialog = false
+            })
+
+    }
     Card(
-        onClick = {  onItemClicked() },
-        shape = RoundedCornerShape(10.dp),
+        modifier = Modifier.clickable { onItemClicked() },
+        elevation = CardDefaults.elevatedCardElevation(defaultElevation = 4.dp)
     ) {
 
         Row(
@@ -42,13 +59,14 @@ fun PatientCard(
             verticalAlignment = Alignment.CenterVertically
         ) {
             Image(
-                modifier = Modifier.weight(2f)
-                    .scale(1.5f) ,
-                painter = painterResource(id =R.drawable.ic_patient),
+                modifier = Modifier
+                    .weight(2f)
+                    .scale(1.5f),
+                painter = painterResource(id = R.drawable.ic_patient),
                 contentDescription = "Sick patient"
             )
 
-            Spacer(modifier =modifier.padding(10.dp) )
+            Spacer(modifier = Modifier.width(10.dp))
 
             Column(modifier = Modifier.weight(6f)) {
                 Row {
@@ -63,7 +81,7 @@ fun PatientCard(
                 Row {
                     Text(
                         text = "Age: ${patient.age}",
-                        style = MaterialTheme.typography.bodySmall.copy() ,
+                        style = MaterialTheme.typography.bodySmall.copy(),
                         maxLines = 1,
                         overflow = TextOverflow.Ellipsis
                     )
@@ -72,39 +90,24 @@ fun PatientCard(
                 Row {
                     Text(
                         text = "Date: ${patient.Date}",
-                        style = MaterialTheme.typography.bodySmall.copy() ,
+                        style = MaterialTheme.typography.bodySmall.copy(),
                         maxLines = 1,
                         overflow = TextOverflow.Ellipsis
                     )
                 }
             }
 
-            Image(
-                modifier = Modifier.weight(1f)
-                    .scale(1.5f) ,
-                painter = painterResource(id =R.drawable.ic_delete),
-                contentDescription = "Sick patient"
-            )
+            IconButton(onClick = { showDialog = true }) {
+                Icon(
+                    painter = painterResource(id = R.drawable.ic_delete),
+                    contentDescription = "Delete item"
+                )
+            }
 
 
         }
-        
+
     }
 
 }
 
-
-@Preview
-@Composable
-fun DefaultPreview() {
-    val samplePatient = PatientDetails(
-        id = 1,
-        name = "John Doe",
-        age = "30",
-        Date = "2022-01-01",
-        gender = "Male",
-        symptoms = "Headache, Fever"
-    )
-
-    PatientCard(patient = samplePatient, onItemClicked = {})
-}

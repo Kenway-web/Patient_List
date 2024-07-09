@@ -36,7 +36,7 @@ class MainActivity : ComponentActivity() {
 //                   PatientList(
 //                       scrollBehavior=scrollBehavior
 //                   )
-                    PatientDetails()
+                   PatientDetails()
                 }
             }
         }

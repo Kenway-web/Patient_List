@@ -12,11 +12,13 @@ import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.material3.TopAppBarScrollBehavior
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.unit.sp
+import  com.music.patient_list.R
 
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -26,6 +28,7 @@ fun TopAppBarState(
     scrollBehavior: TopAppBarScrollBehavior? = null,
     title: String = "Patient List",
     showBackButton: Boolean=false,
+    onBackButtonClicked:()-> Unit
 ){
     CenterAlignedTopAppBar(
         modifier = modifier,
@@ -46,9 +49,9 @@ fun TopAppBarState(
         },
         navigationIcon = {
             if (showBackButton) {
-                IconButton(onClick = {}) {
+                IconButton(onClick = onBackButtonClicked) {
                     Icon(
-                        imageVector = Icons.Filled.ArrowBack,
+                        painter = painterResource(id = R.drawable.ic_back),
                         contentDescription = "Back button"
                     )
                 }

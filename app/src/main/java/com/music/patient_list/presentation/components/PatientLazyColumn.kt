@@ -23,7 +23,8 @@ fun  PatientLazyColumn(
         items(patientList){ patient->
             PatientCard(
                 patient = patient,
-                onItemClicked = {}
+                onItemClicked = {},
+                onDeleteConfirm = {}
             )
           Spacer(modifier = Modifier.padding(10.dp))
         }
