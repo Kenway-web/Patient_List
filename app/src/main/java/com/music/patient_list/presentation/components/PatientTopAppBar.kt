@@ -26,7 +26,7 @@ import  com.music.patient_list.R
 fun TopAppBarState(
     modifier: Modifier = Modifier,
     scrollBehavior: TopAppBarScrollBehavior? = null,
-    title: String = "Patient List",
+    title: String ,
     showBackButton: Boolean=false,
     onBackButtonClicked:()-> Unit
 ){

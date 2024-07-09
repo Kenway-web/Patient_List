@@ -115,7 +115,10 @@ fun PatientList(
             modifier = Modifier.fillMaxSize(),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            TopAppBarState(scrollBehavior = scrollBehavior, onBackButtonClicked = {})
+            TopAppBarState(scrollBehavior = scrollBehavior,
+                onBackButtonClicked = {}, title = "Patient List"
+            )
+
             PatientLazyColumn(modifier = Modifier, patients)
         }
         FloatingActionButton(
