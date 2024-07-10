@@ -15,9 +15,12 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.rememberNavController
 import com.music.patient_list.presentation.PatientDetails.PatientDetails
 import com.music.patient_list.presentation.PatientDetails.PatientDetailsViewModel
 import com.music.patient_list.presentation.PatientList.PatientList
+import com.music.patient_list.presentation.navigation.NavGraphSetup
 import com.music.patient_list.presentation.theme.Patient_ListTheme
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -32,15 +35,13 @@ class MainActivity : ComponentActivity() {
                 // A surface container using the 'background' color from the theme
 
                 val scrollBehavior= TopAppBarDefaults.enterAlwaysScrollBehavior()
+                val navController= rememberNavController()
                 Surface(
                     modifier = Modifier
                         .fillMaxSize()
                         .nestedScroll(scrollBehavior.nestedScrollConnection)
                 ) {
-//                   PatientList(
-//                       scrollBehavior=scrollBehavior
-//                   )
-                   PatientDetails(viewModel = PatientDetailsViewModel())
+                   NavGraphSetup(navController,scrollBehavior=scrollBehavior )
                 }
             }
         }

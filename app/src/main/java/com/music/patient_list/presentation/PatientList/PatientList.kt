@@ -1,5 +1,6 @@
 package com.music.patient_list.presentation.PatientList
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -106,6 +107,8 @@ val patients = listOf(
 @Composable
 fun PatientList(
     scrollBehavior: TopAppBarScrollBehavior,
+    onItemClicked:() -> Unit,
+    onFABClicked: () -> Unit
 ) {
 
     Box(
@@ -119,12 +122,13 @@ fun PatientList(
                 onBackButtonClicked = {}, title = "Patient List"
             )
 
-            PatientLazyColumn(modifier = Modifier, patients)
+            PatientLazyColumn(modifier = Modifier, patients, {onItemClicked()})
         }
         FloatingActionButton(
             modifier = Modifier
                 .align(Alignment.BottomEnd)
-                .padding(24.dp),
+                .padding(24.dp)
+                .clickable { onFABClicked() },
             onClick = {}
         ) {
             Icon(
@@ -134,6 +138,8 @@ fun PatientList(
         }
     }
 }
+
+
 
 
 //@Preview
