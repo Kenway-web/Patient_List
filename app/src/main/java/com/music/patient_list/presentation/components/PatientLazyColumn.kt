@@ -15,6 +15,7 @@ import com.music.patient_list.domain.model.PatientDetails
 fun  PatientLazyColumn(
     modifier: Modifier = Modifier,
     patientList:List<PatientDetails>,
+    ItemClicked: (Int) -> Unit
 ) {
     LazyColumn(
         modifier =modifier
@@ -23,8 +24,8 @@ fun  PatientLazyColumn(
         items(patientList){ patient->
             PatientCard(
                 patient = patient,
-                onItemClicked = {},
-                onDeleteConfirm = {}
+                onItemClicked = {ItemClicked(patient.id)},
+                onDeleteConfirm = {},
             )
           Spacer(modifier = Modifier.padding(10.dp))
         }

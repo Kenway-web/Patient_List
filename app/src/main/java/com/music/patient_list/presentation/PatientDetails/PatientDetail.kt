@@ -47,7 +47,8 @@ import java.util.Calendar
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun PatientDetails(
-    viewModel: PatientDetailsViewModel
+    viewModel: PatientDetailsViewModel,
+    onBackButtonClicked: () -> Unit
 ) {
 
     val state = viewModel.state
@@ -75,7 +76,7 @@ fun PatientDetails(
 
             TopAppBarState(
                 showBackButton = true,
-                onBackButtonClicked = {},
+                onBackButtonClicked = onBackButtonClicked,
                 title = "Patient Detail"
             )
 

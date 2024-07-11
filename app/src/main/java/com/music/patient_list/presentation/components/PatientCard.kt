@@ -34,7 +34,10 @@ import com.music.patient_list.presentation.PatientList.DeleteDialog
 
 @Composable
 fun PatientCard(
-    patient: PatientDetails, onItemClicked: () -> Unit, onDeleteConfirm: () -> Unit
+    modifier: Modifier = Modifier,
+    patient: PatientDetails,
+    onItemClicked: () -> Unit,
+    onDeleteConfirm: () -> Unit
 ) {
     var showDialog by remember { mutableStateOf(false) }
     if (showDialog) {
@@ -48,7 +51,7 @@ fun PatientCard(
 
     }
     Card(
-        modifier = Modifier.clickable { onItemClicked() },
+        modifier = modifier.clickable { onItemClicked() },
         elevation = CardDefaults.elevatedCardElevation(defaultElevation = 4.dp)
     ) {
 
