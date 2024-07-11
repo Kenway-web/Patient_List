@@ -107,7 +107,7 @@ val patients = listOf(
 @Composable
 fun PatientList(
     scrollBehavior: TopAppBarScrollBehavior,
-    onItemClicked:() -> Unit,
+    onItemClicked:(Int) -> Unit,
     onFABClicked: () -> Unit
 ) {
 
@@ -122,14 +122,13 @@ fun PatientList(
                 onBackButtonClicked = {}, title = "Patient List"
             )
 
-            PatientLazyColumn(modifier = Modifier, patients, {onItemClicked()})
+            PatientLazyColumn(modifier = Modifier, patients, {onItemClicked(it)})
         }
         FloatingActionButton(
             modifier = Modifier
                 .align(Alignment.BottomEnd)
-                .padding(24.dp)
-                .clickable { onFABClicked() },
-            onClick = {}
+                .padding(24.dp),
+            onClick = {onFABClicked()}
         ) {
             Icon(
                 painter = painterResource(id = R.drawable.ic_add),

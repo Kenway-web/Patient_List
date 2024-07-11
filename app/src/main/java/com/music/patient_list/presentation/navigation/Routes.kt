@@ -13,6 +13,4 @@ sealed class Routes {
     @Serializable
     data class PatientDetails(val patientId: Int) : Routes()
 
-
-
 }

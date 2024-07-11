@@ -1,6 +1,8 @@
 package com.music.patient_list.presentation.navigation
 
+import android.content.ContentValues.TAG
 import android.os.Build
+import android.util.Log
 import androidx.annotation.RequiresApi
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.TopAppBarScrollBehavior
@@ -29,7 +31,8 @@ fun NavGraphSetup(
             PatientList(
                 scrollBehavior = scrollBehavior,
                 onItemClicked = {
-                    navHostController.navigate(Routes.PatientDetails(it.id.toInt()))
+                    Log.d("TAG1", "${it}")
+                    navHostController.navigate(Routes.PatientDetails(it))
                 },
                 onFABClicked = {
                     navHostController.navigate(Routes.PatientDetails(-1))}
