@@ -26,7 +26,7 @@ An Android app that keeps count of all the patients, used by medical professiona
 <br>
 </br>
 
-<img src="https://github.com/Kenway-web/Patient_List/blob/Development/app/src/main/res/drawable/PatientDetails.png" alt="Profile Details" width="300" height="600">
+<img src="https://github.com/Kenway-web/Patient_List/blob/Development/app/src/main/res/drawable/patientdetail.png" alt="Profile Details" width="300" height="600">
 
 <br>
 </br>
