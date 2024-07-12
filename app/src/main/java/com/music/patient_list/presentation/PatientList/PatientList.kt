@@ -24,83 +24,60 @@ val patients = listOf(
     PatientDetails(
         id = 1,
         name = "John Doe",
-        age = "30",
-        Date = "2022-01-01",
+        age = 30,
         gender = "Male",
-        symptoms = "Headache, Fever"
+        doctorAssigned = "Johny Sins",
+        doctorPrescription = "Headache, Fever"
     ),
     PatientDetails(
         id = 2,
         name = "Jane Smith",
-        age = "25",
-        Date = "2022-01-05",
+        age = 25,
         gender = "Female",
-        symptoms = "Cough, Sore Throat"
+        doctorAssigned = "Johny Sins",
+        doctorPrescription = "Cough, Sore Throat"
     ),
     PatientDetails(
         id = 3,
         name = "Bob Johnson",
-        age = "40",
-        Date = "2022-01-10",
+        age = 25,
         gender = "Male",
-        symptoms = "Fatigue, Muscle Pain"
+        doctorAssigned = "Johny Sins",
+        doctorPrescription = "Fatigue, Muscle Pain"
     ),
     PatientDetails(
         id = 4,
         name = "Alice Brown",
-        age = "28",
-        Date = "2022-01-12",
+        age = 28,
         gender = "Female",
-        symptoms = "Nausea, Dizziness"
+        doctorAssigned = "Johny Sins",
+        doctorPrescription = "Nausea, Dizziness"
     ),
     PatientDetails(
         id = 5,
         name = "Mike Davis",
-        age = "35",
-        Date = "2022-01-15",
+        age = 35,
         gender = "Male",
-        symptoms = "Back Pain, Headache"
+        doctorAssigned = "Johny Sins",
+        doctorPrescription = "Back Pain, Headache"
     ),
     PatientDetails(
         id = 6,
         name = "Emily Taylor",
-        age = "22",
-        Date = "2022-01-18",
+        age = 22,
         gender = "Female",
-        symptoms = "Sore Throat, Runny Nose"
+        doctorAssigned = "Johny Sins",
+        doctorPrescription = "Sore Throat, Runny Nose"
     ),
     PatientDetails(
         id = 7,
         name = "Sarah Lee",
-        age = "38",
-        Date = "2022-01-20",
+        age = 38,
         gender = "Female",
-        symptoms = "Fatigue, Joint Pain"
+        doctorAssigned = "Johny Sins",
+        doctorPrescription = "Fatigue, Joint Pain"
     ),
-    PatientDetails(
-        id = 8,
-        name = "David Kim",
-        age = "42",
-        Date = "2022-01-22",
-        gender = "Male",
-        symptoms = "Chest Pain, Shortness of Breath"
-    ),
-    PatientDetails(
-        id = 9,
-        name = "Lisa Nguyen",
-        age = "29",
-        Date = "2022-01-25",
-        gender = "Female",
-        symptoms = "Abdominal Pain, Diarrhea"
-    ),
-    PatientDetails(
-        id = 10,
-        name = "Kevin White",
-        age = "45",
-        Date = "2022-01-28",
-        gender = "Male",
-        symptoms = "Headache, Nausea"
-    )
+
 )
 
 @OptIn(ExperimentalMaterial3Api::class)

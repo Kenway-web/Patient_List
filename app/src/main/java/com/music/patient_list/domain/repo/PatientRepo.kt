@@ -1,7 +1,9 @@
 package com.music.patient_list.domain.repo
 
+import com.music.patient_list.data.data_source.Patient
 import com.music.patient_list.domain.model.PatientDetails
 import kotlinx.coroutines.flow.Flow
+
 
 interface PatientRepo {
     suspend fun insertPatient(patient: PatientDetails)

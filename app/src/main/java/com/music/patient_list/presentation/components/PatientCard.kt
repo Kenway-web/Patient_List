@@ -90,14 +90,6 @@ fun PatientCard(
                     )
                 }
 
-                Row {
-                    Text(
-                        text = "Date: ${patient.Date}",
-                        style = MaterialTheme.typography.bodySmall.copy(),
-                        maxLines = 1,
-                        overflow = TextOverflow.Ellipsis
-                    )
-                }
             }
 
             IconButton(onClick = { showDialog = true }) {
