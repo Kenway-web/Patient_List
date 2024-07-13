@@ -9,10 +9,12 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
+import com.music.patient_list.domain.model.PatientDetailsEntity
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun DeleteDialog(
+    patient:PatientDetailsEntity,
     title: String,
     message: String,
     onDialogDismissClicked:()-> Unit,
@@ -22,7 +24,7 @@ fun DeleteDialog(
         title = { Text(text = title, style = MaterialTheme.typography.bodyLarge) },
         text = { Text(text = message, style = MaterialTheme.typography.bodySmall) },
         confirmButton = {
-            Button(onClick = onConfirmButtonClicked) {
+            Button(onClick = { onConfirmButtonClicked()}) {
                 Text("Yes")
             }
         },

@@ -1,6 +1,5 @@
 package com.music.patient_list.presentation.PatientList
 
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -16,69 +15,33 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.music.patient_list.R
-import com.music.patient_list.domain.model.PatientDetails
-import com.music.patient_list.presentation.PatientDetails.PatientDetailsViewModel
+import com.music.patient_list.domain.model.PatientDetailsEntity
 import com.music.patient_list.presentation.components.PatientLazyColumn
 import com.music.patient_list.presentation.components.TopAppBarState
 
 
 val patients = listOf(
-    PatientDetails(
-        id = 1,
+    PatientDetailsEntity(
         name = "John Doe",
         age = 30,
         gender = "Male",
         doctorAssigned = "Johny Sins",
         doctorPrescription = "Headache, Fever"
     ),
-    PatientDetails(
-        id = 2,
+    PatientDetailsEntity(
         name = "Jane Smith",
         age = 25,
         gender = "Female",
         doctorAssigned = "Johny Sins",
         doctorPrescription = "Cough, Sore Throat"
     ),
-    PatientDetails(
-        id = 3,
+    PatientDetailsEntity(
         name = "Bob Johnson",
         age = 25,
         gender = "Male",
         doctorAssigned = "Johny Sins",
         doctorPrescription = "Fatigue, Muscle Pain"
-    ),
-    PatientDetails(
-        id = 4,
-        name = "Alice Brown",
-        age = 28,
-        gender = "Female",
-        doctorAssigned = "Johny Sins",
-        doctorPrescription = "Nausea, Dizziness"
-    ),
-    PatientDetails(
-        id = 5,
-        name = "Mike Davis",
-        age = 35,
-        gender = "Male",
-        doctorAssigned = "Johny Sins",
-        doctorPrescription = "Back Pain, Headache"
-    ),
-    PatientDetails(
-        id = 6,
-        name = "Emily Taylor",
-        age = 22,
-        gender = "Female",
-        doctorAssigned = "Johny Sins",
-        doctorPrescription = "Sore Throat, Runny Nose"
-    ),
-    PatientDetails(
-        id = 7,
-        name = "Sarah Lee",
-        age = 38,
-        gender = "Female",
-        doctorAssigned = "Johny Sins",
-        doctorPrescription = "Fatigue, Joint Pain"
-    ),
+    )
 
 )
 
@@ -88,9 +51,11 @@ fun PatientList(
     scrollBehavior: TopAppBarScrollBehavior,
     onItemClicked:(Int) -> Unit,
     onFABClicked: () -> Unit,
+    onDeleteItemClicked:(Int)->Unit,
     viewModel: PatientListViewModel = hiltViewModel()
 ) {
 
+    val patientList = viewModel.patientList
     Box(
         modifier = Modifier.fillMaxSize(),
     ) {
@@ -102,7 +67,13 @@ fun PatientList(
                 onBackButtonClicked = {}, title = "Patient List"
             )
 
-            PatientLazyColumn(modifier = Modifier, patients, {onItemClicked(it)})
+            PatientLazyColumn(
+                modifier = Modifier,
+                patientList,
+                {onItemClicked(it)},
+                viewModel
+                )
+
         }
         FloatingActionButton(
             modifier = Modifier
@@ -121,8 +92,3 @@ fun PatientList(
 
 
 
-//@Preview
-//@Composable
-//fun DefaultPreview() {
-//    PatientList(sc)
-//}

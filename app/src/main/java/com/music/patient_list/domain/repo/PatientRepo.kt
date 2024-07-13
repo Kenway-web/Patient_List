@@ -1,13 +1,13 @@
 package com.music.patient_list.domain.repo
 
-import com.music.patient_list.data.data_source.Patient
-import com.music.patient_list.domain.model.PatientDetails
+
+import com.music.patient_list.domain.model.PatientDetailsEntity
 import kotlinx.coroutines.flow.Flow
 
 
 interface PatientRepo {
-    suspend fun addOrUpdatePatient (patient: PatientDetails)
-    suspend fun deletePatient(patient: PatientDetails)
-    fun getPatients(): Flow<List<PatientDetails>>
-    suspend fun getPatientById(id: Int): PatientDetails?
+    suspend fun addOrUpdatePatient (patient: PatientDetailsEntity)
+    suspend fun deletePatient(patient: PatientDetailsEntity)
+    fun getPatients(): Flow<List<PatientDetailsEntity>>
+    suspend fun getPatientById(id: Int): PatientDetailsEntity?
 }

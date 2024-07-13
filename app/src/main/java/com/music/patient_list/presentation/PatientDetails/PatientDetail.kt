@@ -50,7 +50,8 @@ import java.util.Calendar
 @Composable
 fun PatientDetails(
     viewModel:  PatientDetailsViewModel = hiltViewModel(),
-    onBackButtonClicked: () -> Unit
+    onBackButtonClicked: () -> Unit,
+    onSaveClicked:() -> Unit
 ) {
 
     val state = viewModel.state
@@ -208,7 +209,11 @@ fun PatientDetails(
                 Spacer(modifier = Modifier.height(10.dp))
                 Button(
                     modifier = Modifier.fillMaxWidth(),
-                    onClick = { /*TODO*/ }
+                    onClick = {
+                        viewModel.onEvent(PatientDetailsEvent.SaveButtonClicked)
+                        onSaveClicked()
+                    }
+
                 ) {
                     Text(
                         text = "Save",

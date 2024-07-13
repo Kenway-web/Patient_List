@@ -35,13 +35,22 @@ fun NavGraphSetup(
                     navHostController.navigate(Routes.PatientDetails(it))
                 },
                 onFABClicked = {
-                    navHostController.navigate(Routes.PatientDetails(-1))}
+                    navHostController.navigate(Routes.PatientDetails(-1))
+                },
+                onDeleteItemClicked = {
+
+                }
             )
         }
 
         composable<Routes.PatientDetails> {  backStackEntry->
 
-            PatientDetails(onBackButtonClicked = {navHostController.navigateUp()} )
+            PatientDetails(
+                onBackButtonClicked = {navHostController.navigateUp()},
+                onSaveClicked = {navHostController.navigateUp()}
+
+            )
+
         }
 
     }

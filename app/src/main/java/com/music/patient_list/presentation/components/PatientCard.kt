@@ -25,29 +25,32 @@ import androidx.compose.ui.draw.scale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.music.patient_list.R
-import com.music.patient_list.domain.model.PatientDetails
+import com.music.patient_list.domain.model.PatientDetailsEntity
 import com.music.patient_list.presentation.PatientList.DeleteDialog
 
 
 @Composable
 fun PatientCard(
     modifier: Modifier = Modifier,
-    patient: PatientDetails,
+    patient: PatientDetailsEntity,
     onItemClicked: () -> Unit,
     onDeleteConfirm: () -> Unit
 ) {
     var showDialog by remember { mutableStateOf(false) }
     if (showDialog) {
-        DeleteDialog(title = "Delete",
+        DeleteDialog(
+            patient,
+            title = "Delete",
             message = "Are you sure you want to delete" + "patient \"${patient.name}\" from patient list",
             onDialogDismissClicked = { showDialog = false },
-            onConfirmButtonClicked = {
+            onConfirmButtonClicked ={
                 onDeleteConfirm()
-                showDialog = false
-            })
+                showDialog=false
+            },
+
+        )
 
     }
     Card(
