@@ -4,8 +4,12 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
+import com.music.patient_list.domain.repo.PatientRepo
+import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 
-class PatientDetailsViewModel:ViewModel() {
+@HiltViewModel
+class PatientDetailsViewModel  @Inject constructor(private val repository: PatientRepo):ViewModel()  {
         var state by mutableStateOf(PatientDetailsUIState())
 
         fun onEvent(event:PatientDetailsEvent){

@@ -40,8 +40,8 @@ fun NavGraphSetup(
         }
 
         composable<Routes.PatientDetails> {  backStackEntry->
-            val viewModel = PatientDetailsViewModel()
-            PatientDetails(viewModel =viewModel, onBackButtonClicked = {navHostController.navigateUp()} )
+
+            PatientDetails(onBackButtonClicked = {navHostController.navigateUp()} )
         }
 
     }

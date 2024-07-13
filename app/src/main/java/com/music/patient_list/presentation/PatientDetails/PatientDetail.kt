@@ -38,7 +38,9 @@ import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.hilt.navigation.compose.hiltViewModel
 import com.music.patient_list.presentation.components.TopAppBarState
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.delay
 import java.time.Instant
 import java.util.Calendar
@@ -47,7 +49,7 @@ import java.util.Calendar
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun PatientDetails(
-    viewModel: PatientDetailsViewModel,
+    viewModel:  PatientDetailsViewModel = hiltViewModel(),
     onBackButtonClicked: () -> Unit
 ) {
 

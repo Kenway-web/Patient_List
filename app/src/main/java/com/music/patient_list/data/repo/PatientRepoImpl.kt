@@ -10,9 +10,12 @@ import kotlinx.coroutines.flow.map
 
 
 class PatientRepoImpl(private val patientDao: PatientDao):PatientRepo{
-    override suspend fun insertPatient(patientDetails: PatientDetails) {
-        patientDao.insertPatient(patientDetails.toPatientEntity())
+
+
+    override suspend fun addOrUpdatePatient(patient: PatientDetails) {
+        patientDao.addOrUpdatePatient(patient.toPatientEntity())
     }
+
 
     override suspend fun deletePatient(patient: PatientDetails) {
         patientDao.deletePatient(patient.toPatientEntity())

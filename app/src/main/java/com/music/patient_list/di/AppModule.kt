@@ -13,9 +13,9 @@ import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
-object AppModule {
+object AppModule{
+
     @Provides
-    @Singleton
     fun providePatientDatabase(app: Application): PatientDatabase {
         return Room.databaseBuilder(
             app,
@@ -26,7 +26,10 @@ object AppModule {
 
     @Provides
     @Singleton
-    fun providePatientRepo(db: PatientDatabase): PatientRepo {
-        return PatientRepoImpl(db.patientDao)
+    fun providePatientRepo(
+        db: PatientDatabase
+    ):PatientRepo{
+        return PatientRepoImpl(patientDao = db.patientDao)
     }
+
 }

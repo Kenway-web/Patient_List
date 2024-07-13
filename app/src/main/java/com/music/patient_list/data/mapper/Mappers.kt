@@ -17,7 +17,7 @@ fun PatientDetails.toPatientEntity(): Patient {
 
 fun Patient.toPatientDetails(): PatientDetails {
     return PatientDetails(
-        id = this.id,
+        id = this.id ?: -1,  // Default value for null id
         name = this.name,
         age = this.age,
         gender = this.gender,

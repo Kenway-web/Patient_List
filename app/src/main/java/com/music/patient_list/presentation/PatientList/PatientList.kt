@@ -14,8 +14,10 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
+import androidx.hilt.navigation.compose.hiltViewModel
 import com.music.patient_list.R
 import com.music.patient_list.domain.model.PatientDetails
+import com.music.patient_list.presentation.PatientDetails.PatientDetailsViewModel
 import com.music.patient_list.presentation.components.PatientLazyColumn
 import com.music.patient_list.presentation.components.TopAppBarState
 
@@ -85,7 +87,8 @@ val patients = listOf(
 fun PatientList(
     scrollBehavior: TopAppBarScrollBehavior,
     onItemClicked:(Int) -> Unit,
-    onFABClicked: () -> Unit
+    onFABClicked: () -> Unit,
+    viewModel: PatientListViewModel = hiltViewModel()
 ) {
 
     Box(
