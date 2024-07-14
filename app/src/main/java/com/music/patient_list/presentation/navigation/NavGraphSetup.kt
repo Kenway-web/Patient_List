@@ -10,6 +10,7 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import com.music.patient_list.domain.usecase.DeletePatientUseCase
 import com.music.patient_list.presentation.PatientDetails.PatientDetails
 import com.music.patient_list.presentation.PatientDetails.PatientDetailsViewModel
 import com.music.patient_list.presentation.PatientList.PatientList
@@ -36,9 +37,6 @@ fun NavGraphSetup(
                 },
                 onFABClicked = {
                     navHostController.navigate(Routes.PatientDetails(-1))
-                },
-                onDeleteItemClicked = {
-
                 }
             )
         }

@@ -10,8 +10,10 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.music.patient_list.domain.model.PatientDetailsEntity
+import com.music.patient_list.domain.usecase.DeletePatientUseCase
 import com.music.patient_list.presentation.PatientList.PatientListViewModel
 import kotlinx.coroutines.flow.Flow
 
@@ -21,8 +23,9 @@ fun  PatientLazyColumn(
     modifier: Modifier = Modifier,
     patientList: Flow<List<PatientDetailsEntity>>,
     ItemClicked: (Int) -> Unit,
-    viewModel: PatientListViewModel
+    viewModel: PatientListViewModel = hiltViewModel(),
 ) {
+
 
     val patientListState by patientList.collectAsState(initial = emptyList())
     LazyColumn(

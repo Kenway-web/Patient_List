@@ -16,34 +16,10 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.music.patient_list.R
 import com.music.patient_list.domain.model.PatientDetailsEntity
+import com.music.patient_list.domain.usecase.DeletePatientUseCase
 import com.music.patient_list.presentation.components.PatientLazyColumn
 import com.music.patient_list.presentation.components.TopAppBarState
 
-
-val patients = listOf(
-    PatientDetailsEntity(
-        name = "John Doe",
-        age = 30,
-        gender = "Male",
-        doctorAssigned = "Johny Sins",
-        doctorPrescription = "Headache, Fever"
-    ),
-    PatientDetailsEntity(
-        name = "Jane Smith",
-        age = 25,
-        gender = "Female",
-        doctorAssigned = "Johny Sins",
-        doctorPrescription = "Cough, Sore Throat"
-    ),
-    PatientDetailsEntity(
-        name = "Bob Johnson",
-        age = 25,
-        gender = "Male",
-        doctorAssigned = "Johny Sins",
-        doctorPrescription = "Fatigue, Muscle Pain"
-    )
-
-)
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -51,8 +27,7 @@ fun PatientList(
     scrollBehavior: TopAppBarScrollBehavior,
     onItemClicked:(Int) -> Unit,
     onFABClicked: () -> Unit,
-    onDeleteItemClicked:(Int)->Unit,
-    viewModel: PatientListViewModel = hiltViewModel()
+    viewModel: PatientListViewModel = hiltViewModel(),
 ) {
 
     val patientList = viewModel.patientList
@@ -71,7 +46,6 @@ fun PatientList(
                 modifier = Modifier,
                 patientList,
                 {onItemClicked(it)},
-                viewModel
                 )
 
         }
