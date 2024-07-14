@@ -1,0 +1,17 @@
+
+name: on Pull Request Opened
+
+on:
+  pull_request:
+    branches: [main,Development]
+  push:
+    branches: [ '*' ]
+
+jobs:
+  lint:
+    name: Lint Debug Variant
+    uses: ./.github/workflows/job_lint_debug.yml
+
+  test:
+    name : Test Debug Variant
+    uses: ./.github/workflows/job_test_debug.yml
