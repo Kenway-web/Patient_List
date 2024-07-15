@@ -1,16 +1,8 @@
 package com.music.patient_list.presentation.navigation
 
-import kotlinx.serialization.Serializable
-
-
-@Serializable
-sealed class Routes {
-
-    @Serializable
-
-    data object PatientList:Routes()
-
-    @Serializable
-    data class PatientDetails(val patientId: Int) : Routes()
-
+sealed class Routes(val route: String) {
+    object PatientList : Routes("patient_list")
+    object PatientDetails : Routes("patient_details/{patientId}") {
+        fun createRoute(patientId: Int) = "patient_details/$patientId"
+    }
 }

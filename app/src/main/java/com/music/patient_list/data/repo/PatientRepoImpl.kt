@@ -8,10 +8,10 @@ import com.music.patient_list.domain.model.PatientDetailsEntity
 import com.music.patient_list.domain.repo.PatientRepo
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
+import javax.inject.Inject
 
 
-class PatientRepoImpl(private val patientDao: PatientDao):PatientRepo{
-
+class PatientRepoImpl @Inject constructor(private val patientDao: PatientDao):PatientRepo{
 
 
     override suspend fun addOrUpdatePatient(patient: PatientDetailsEntity) {

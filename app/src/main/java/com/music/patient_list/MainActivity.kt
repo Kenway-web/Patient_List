@@ -20,7 +20,7 @@ import androidx.navigation.compose.rememberNavController
 import com.music.patient_list.presentation.PatientDetails.PatientDetails
 import com.music.patient_list.presentation.PatientDetails.PatientDetailsViewModel
 import com.music.patient_list.presentation.PatientList.PatientList
-import com.music.patient_list.presentation.navigation.NavGraphSetup
+import com.music.patient_list.presentation.navigation.NavGraphSetUp
 import com.music.patient_list.presentation.theme.Patient_ListTheme
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -41,7 +41,7 @@ class MainActivity : ComponentActivity() {
                         .fillMaxSize()
                         .nestedScroll(scrollBehavior.nestedScrollConnection)
                 ) {
-                   NavGraphSetup(navController,scrollBehavior=scrollBehavior )
+                    NavGraphSetUp(navController,scrollBehavior=scrollBehavior )
                 }
             }
         }

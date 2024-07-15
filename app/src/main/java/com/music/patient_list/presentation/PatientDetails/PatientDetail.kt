@@ -22,11 +22,7 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.rememberDatePickerState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
-import androidx.compose.runtime.saveable.rememberSaveable
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.focus.FocusDirection
@@ -39,6 +35,8 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.lifecycle.SavedStateHandle
+import com.music.patient_list.data.data_source.Patient
 import com.music.patient_list.presentation.components.TopAppBarState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.delay
@@ -51,8 +49,15 @@ import java.util.Calendar
 fun PatientDetails(
     viewModel:  PatientDetailsViewModel = hiltViewModel(),
     onBackButtonClicked: () -> Unit,
-    onSaveClicked:() -> Unit
+    onSaveClicked:() -> Unit,
+    patientId: Int
 ) {
+
+    LaunchedEffect(key1 = patientId) {
+        if(patientId!=-1){
+            viewModel.fetchPatient(patientId)
+        }
+    }
 
     val state = viewModel.state
     val focusRequester = remember {
@@ -226,7 +231,9 @@ fun PatientDetails(
         }
 
     }
+
 }
+
 
 // state :Anything that can change during the usage of the app.
 // event : Anything that a user can do is event

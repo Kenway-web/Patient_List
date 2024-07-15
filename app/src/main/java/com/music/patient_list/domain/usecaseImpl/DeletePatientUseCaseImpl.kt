@@ -11,11 +11,9 @@ import javax.inject.Inject
 
 class DeletePatientUseCaseImpl @Inject constructor(private val patientRepo: PatientRepo) :
     DeletePatientUseCase {
-    override fun deletePatient(patient: PatientDetailsEntity) {
+    override suspend fun deletePatient(patient: PatientDetailsEntity) {
 
-        CoroutineScope(Dispatchers.IO).launch {
-            patientRepo.deletePatient(patient = patient)
-        }
+        patientRepo.deletePatient(patient)
     }
 
 }

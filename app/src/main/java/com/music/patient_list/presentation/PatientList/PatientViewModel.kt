@@ -12,20 +12,24 @@ import javax.inject.Inject
 
 
 @HiltViewModel
-class PatientListViewModel @Inject constructor(private val deletePatientUseCase: DeletePatientUseCaseImpl,private val getPatientDetailUseCase: GetAllPatientsImpl) : ViewModel() {
-    private  val _privateList = MutableStateFlow<List<PatientDetailsEntity>>(emptyList())
+class PatientListViewModel @Inject constructor(
+    private val deletePatientUseCase: DeletePatientUseCaseImpl,
+    private val getAllPatientsUseCase: GetAllPatientsImpl
+) : ViewModel() {
+    private val _privateList = MutableStateFlow<List<PatientDetailsEntity>>(emptyList())
     val patientList = _privateList
 
     init {
-        viewModelScope.launch { getPatientDetailUseCase.getPatientsList().collect(
-            _privateList::emit
-        ) }
+        viewModelScope.launch {
+            getAllPatientsUseCase.getPatientsList().collect(
+                _privateList::emit
+            )
+        }
     }
 
-    fun deletePatient(patient:PatientDetailsEntity){
+    fun deletePatient(patient: PatientDetailsEntity) {
         viewModelScope.launch {
             deletePatientUseCase.deletePatient(patient)
         }
-
     }
 }
