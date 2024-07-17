@@ -10,6 +10,7 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import com.music.patient_list.domain.model.PatientDetailsEntity
 import com.music.patient_list.domain.repo.PatientRepo
 import com.music.patient_list.domain.usecaseImpl.AddPatientToListUseCaseImpl
+import com.music.patient_list.domain.usecaseImpl.GetPatientDetailsUseCaseImpl
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -18,6 +19,7 @@ import javax.inject.Inject
 class PatientDetailsViewModel @Inject constructor(
     private val addPatientToListUseCase: AddPatientToListUseCaseImpl,
     private val patientRepo: PatientRepo,
+    private val getPatientDetailsUseCase: GetPatientDetailsUseCaseImpl
 ) : ViewModel() {
 
     var currentPatientId:Int?=null
@@ -77,15 +79,15 @@ class PatientDetailsViewModel @Inject constructor(
 
         if(patientId!=-1) {
              viewModelScope.launch {
-                 patientRepo.getPatientById(patientId)?.apply {
+                 getPatientDetailsUseCase.getPatientDetailById(patientId)?.also {
                      state = state.copy(
-                         name = name,
-                         age = age.toString(),
-                         gender = gender.toInt(),
-                         doctorName = doctorAssigned,
-                         doctorPrescription = doctorPrescription,
+                         name = it.name,
+                         age = it.age.toString(),
+                         gender = it.gender.toInt(),
+                         doctorName = it.doctorAssigned,
+                         doctorPrescription = it.doctorPrescription,
                      )
-                     currentPatientId=patientId
+                     currentPatientId = patientId
                  }
              }
         }
