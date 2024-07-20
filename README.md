@@ -22,15 +22,10 @@ An Android app that keeps count of all the patients, used by medical professiona
    ```sh
    git clone https://github.com/yourusername/patient-tracker-list-app.git
 
-
 <br>
-</br>
-
-<img src="https://github.com/Kenway-web/Patient_List/blob/Development/app/src/main/res/drawable/patientdetail.png" alt="Profile Details" width="300" height="600">
-
+<img src="https://github.com/Kenway-web/Patient_List/blob/Development/app/src/main/res/drawable/patientdetail.png" alt="Profile Details" width="300" height="600" style="display:inline;margin:0 10px;">
+<img src="https://github.com/Kenway-web/Patient_List/blob/Development/app/src/main/res/drawable/patientdetail.png" alt="Profile Details" width="300" height="600" style="display:inline;margin:0 10px;">
 <br>
-</br>
-
 
 
 ### Authors
